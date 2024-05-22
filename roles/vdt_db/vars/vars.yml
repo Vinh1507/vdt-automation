@@ -1,0 +1,5 @@
+vdt_db_image_name: "vinhbh/vdt_db"
+vdt_db_image_version: "1.0"
+vdt_db_container_name: "vdt-db"
+vdt_db_port: 5432
+vdt_db_volume: "vdt-data"

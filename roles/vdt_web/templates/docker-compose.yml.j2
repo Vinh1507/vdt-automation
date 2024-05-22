@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  vdt-web:
+    image: "{{ vdt_web_image_name }}:{{ vdt_web_image_version }}"
+    container_name: "{{ vdt_web_container_name }}"
+    ports:
+      - "{{ vdt_web_port }}:80"
+    volumes:
+      - {{ vdt_web_volume }}:/app
+
+volumes:
+  {{ vdt_web_volume }}:

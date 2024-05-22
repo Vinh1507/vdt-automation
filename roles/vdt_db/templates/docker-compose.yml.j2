@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  vdt-db:
+    image: "{{ vdt_db_image_name }}:{{ vdt_db_image_version }}"
+    container_name: "{{ vdt_db_container_name }}"
+    ports:
+      - "{{ vdt_db_port }}:5432"
+    volumes:
+      - {{ vdt_db_volume }}:/var/lib/postgresql/data
+
+volumes:
+  {{ vdt_db_volume }}:

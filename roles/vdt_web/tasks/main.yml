@@ -1,0 +1,35 @@
+- name: Include vars
+  include_vars:
+    file: vars.yml
+
+- name: Check if docker-compose.yml exists
+  stat:
+    path: /vdt-web/docker-compose.yml
+  register: compose_file
+
+- name: Run Docker Compose down
+  shell: sudo docker compose down
+  args:
+    chdir: /vdt-web
+  when: compose_file.stat.exists
+    
+- name: Remove directory vdt
+  file:
+    path: /vdt-web          
+    state: absent
+
+- name: Create directory vdt
+  file:
+    path: /vdt-web     
+    state: directory
+    mode: '0755'
+
+- name: Render Docker Compose template
+  template:
+    src: docker-compose.yml.j2
+    dest: /vdt-web/docker-compose.yml
+
+- name: Run Docker Compose up
+  shell: sudo docker compose up -d
+  args:
+    chdir: /vdt-web
