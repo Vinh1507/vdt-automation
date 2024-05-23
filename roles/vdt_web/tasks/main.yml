@@ -1,7 +1,3 @@
-- name: Include vars
-  include_vars:
-    file: vars.yml
-
 - name: Check if docker-compose.yml exists
   stat:
     path: /vdt-web/docker-compose.yml
