@@ -27,3 +27,8 @@
   become: true
   roles:
     - ../roles/vdt_api
+  vars_files:
+    - ../roles/vdt_api/vars/vault.yml
+    - ../roles/vdt_api/vars/main.yml
+  tags: 
+    - vdt_backend
