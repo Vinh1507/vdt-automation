@@ -32,3 +32,9 @@
     - ../roles/vdt_api/vars/main.yml
   tags: 
     - vdt_backend
+  serial: 50%
+
+- hosts: vdt_lb
+  become: true
+  roles:
+    - ../roles/vdt_lb
